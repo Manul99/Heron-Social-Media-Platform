@@ -1,4 +1,4 @@
-name: Build and Deploy frontend 
+name: Build and Deploy frontend
 
 on:
   push:
@@ -37,11 +37,9 @@ jobs:
         shell: powershell
 
       - name: Push Image to Docker Hub
-        run: |
-          docker push $env:FULL_IMAGE_NAME
+        run: docker push $env:FULL_IMAGE_NAME
         shell: powershell
 
       - name: Update Kubernetes Deployment Image
-        run: |
-          kubectl set image deployment/$env:KUBE_DEPLOYMENT $env:CONTAINER_NAME=$env:FULL_IMAGE_NAME -n $env:KUBE_NAMESPACE
+        run: kubectl set image deployment/$env:KUBE_DEPLOYMENT $env:CONTAINER_NAME=$env:FULL_IMAGE_NAME -n $env:KUBE_NAMESPACE
         shell: powershell
