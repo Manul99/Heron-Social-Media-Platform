@@ -19,8 +19,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Skipping checkout due to fork restrictions
+        run: echo "Skipping checkout step"
+
 
       - name: Show files (debug)
         run: Get-ChildItem -Force
